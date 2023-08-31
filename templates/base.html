@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Магазин Макса{% endblock %} - Макса ШОП</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/shop.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header-main">
+    <div id="header">
+
+        <div id="hleft" class="header-item">
+            <a href="{% url 'shop:home' %}" id="home-link">
+                <img src="{% static 'images/home.png' %}" alt="Home page" class="home-icon">
+                <h1 class="home-text">Макса ШОП</h1>
+            </a>
+        </div>
+
+        <div id="hcenter" class="header-item">
+            <form autocomplete="off" action="{% url 'shop:search_redirect' %}" method="get" id="search-form">
+                <input type="search" name="query" placeholder="Поиск товаров" id="search-line">
+                <button type="submit" id="search-button">
+                    <img src="{% static 'images/search.png' %}" id="search-icon">
+                </button>
+            </form>
+        </div>
+
+        <div id="hright" class="header-item">
+            <button type="button" onclick="window.open('{% url 'shop:new_product' %}', '_self');" id="add_button">
+                Выставить товар
+            </button>
+        </div>
+    </div>
+    </div>
+
+    <div id="body">
+        {% block content %}
+        <h1 id="empty-page">Здесь пока-что пусто. Воспользуйтесь поиском.</h1>
+        <p style="font-size: 10px">Отдам этот магазин бесплатно случайному покупателю.</p>
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if success %}
+        Товар добавлен
+    {% else %}
+        Ошибка
+    {% endif %}
+{% endblock title %}
+
+{% block content %}
+    {% if success %}
+        <h1 id="add-success" class="add-info">Товар успешно добавлен</h1>
+    {% else %}
+        <h1 id="add-error" class="add-info">Произошла ошибка!</h1>
+    {% endif %}
+    <p id="add-after-message">
+        Перейдите на
+        <a href="{% url 'shop:home' %}" class="link">главную страницу</a>
+        или воспользуйтесь
+        <em onclick="document.getElementById('search-line').focus()" class="link">
+            поиском</em>.
+    </p>
+{% endblock content %}
+
+

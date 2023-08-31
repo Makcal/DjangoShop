@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Поиск товаров по {{query}}{% endblock %}
+
+{% block content %}
+    <div class="query-info">
+        <p>Результаты по поиску: <span class="query">{{query}}</span></p>
+        <h1>Найдено товаров: {{products|length}}</h1>
+    </div>
+    <hr>
+
+    <div id="result">
+        {% for pr in products %}
+            {% include 'shop/thumbnail.html' %}
+        {% endfor %}
+    </div>
+{% endblock content %}

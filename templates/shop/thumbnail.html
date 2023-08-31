@@ -1,0 +1,29 @@
+{% load static %}
+<div class="product-box">
+    <a href="{% url 'shop:product' pr.id %}" class="photo-link">
+        {% if pr.photo %}
+            <img src="{{pr.photo}}" alt="photo" class="product-photo">
+        {% else %}
+            <div class="product-photo"></div>
+        {% endif %}
+    </a>
+
+    <div class="product-details">
+        <span class="price">{{pr.price|floatformat:"-2"}} &#8381;</span>
+
+        <a href="{% url 'shop:product' pr.id %}" class="product-link">
+            <h2 class="product-name">{{pr.name}}</h2>
+        </a>
+
+        <div class="count-box">
+            {% if pr.amount > 0 %}
+                <p class="count">Кол-во: {{pr.amount}}</p>
+            {% else %}
+                <p class="not-avaible">
+                    Нет в наличии
+                    <img src="{% static 'images/not-avaible.png' %}" alt="X" class="not-avaible-icon">
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</div>

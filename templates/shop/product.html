@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{product.name}}{% endblock %}
+
+{% block content %}
+    <h1 id="page-product-name">{{product.name}}</h1>
+
+    <div id="page-product-info">
+        <div id="page-pictures">
+            <img src="{{product.photo}}" id="page-main-picture">
+        </div>
+
+        <div id="page-product-details">
+            <p id="page-product-desc" class="desc-item">
+                {{product.desc}}
+            </p>
+            <hr class="light-hr">
+
+            <h2 id="page-product-price" class="desc-item">Цена: {{product.price|floatformat:"-2"}} &#8381;</h2>
+            <hr class="light-hr">
+
+            <div class="desc-item">
+            {% if product.amount > 0 %}
+                <p class="count">В наличии: {{product.amount}} шт.</p>
+            {% else %}
+                <p class="not-avaible">
+                    Нет в наличии
+                    <img src="{% static 'images/not-avaible.png' %}" alt="X" class="not-avaible-icon">
+                </p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
